@@ -6,7 +6,7 @@
         {% if title %}
         <title>Arwen&Aragorn - {{ title }}</title>
         {% else %}
-        <title>Arwen&Aragorn!</title>
+        <title>Arwen&Aragorn</title>
         {% endif %}
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -26,7 +26,7 @@
 
             /* base, index e uploadedphotos */
             .hero-image {
-                background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://desafio-surfmappers-estag.s3-us-west-2.amazonaws.com/wedding-bride-ceremony-1396579-pxhere.com.jpg");
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://desafio-surfmappers-estag.s3-us-west-2.amazonaws.com/wedding-bride-ceremony-1396579-pxhere.com.jpg");
                 background-color: #cccccc;
                 height: 56rem;
                 background-position: center;
@@ -40,6 +40,7 @@
             .hero-text {
                 text-align: center;
                 color: white;
+
             }
 
             .hero-text h1 {
@@ -54,6 +55,18 @@
                 display: flex;
                 flex-wrap: wrap; 
                 display: inline-block;
+                animation-name: fadeIn;
+                animation-duration: 2s;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0.25;
+                }
+
+                100% {
+                    opacity: 1;
+                }               
             }
 
             #photos img {
@@ -61,8 +74,9 @@
                 padding: 2rem;
                 background-color: beige;
                 margin-bottom: 0.25rem;
-
+                -webkit-animation: fadeIn 3s ease-in-out;
             }
+
 
             ul li a {
                 color: azure;
@@ -78,25 +92,73 @@
                 color: white;
             }
 
-            #photosubmit {
+            .submitbutton {
                 border-radius: 10%;
-                border: none;
-                width: 5rem;
-                height: 3rem;
+                height: 2.5rem;
                 background-color: blanchedalmond;
+                border: none;
+                transition: 600ms;
+                margin-top: 2rem;
+            }
+
+            .submitbutton:hover {
+                background-color: rgb(250, 209, 207);
+                border: solid 1px;
+            }
+
+
+            .submitbuttonu {
+                border-radius: 10%;
+                width: 6rem;
+                height: 2.5rem;
+                background-color: blanchedalmond;
+                transition: 600ms;
+                border: none;
+
+            }
+
+            .submitbuttonu:hover {
+                background-color: rgb(255, 216, 149);
+
             }
 
             .container { 
                 margin: auto;
                 text-align: center;
                 color: white;
+                border: solid;
+                width: 25%;
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+                margin-top: 3rem;
+                background: rgb(37, 37, 35, 0.5);;
             }
+
+            .container p {
+                margin-bottom: 2rem;
+            }
+
+            .container #form {
+                padding-top: 2rem;
+            }
+
+            #cadastro {
+                margin-top: 1.5rem;
+                padding-top: 3rem;
+                padding-bottom: 2.5rem;
+            }
+
 
             #upload input {
                 margin: 1.5rem;
+                
                 border-radius: 10%;
             }
 
+            .botaof {
+                background: #cccccc;
+
+            }
         </style>
     </head>
     <body class="hero-image">
@@ -105,12 +167,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('index') }}">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('newuser') }}">Adicionar Usuário</a>
-                </li>
                 {% if current_user.is_anonymous %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('newuser') }}">Cadastre-se</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
@@ -118,6 +180,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('newuser') }}">Adicionar Usuário</a>
                 </li>
                 {% endif %}
                 <li class="nav-item">
