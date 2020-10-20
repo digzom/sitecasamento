@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="hero-text" id="upload">
+    <div class="container" id="upload">
         <h2>Envie sua foto do casamento</h2>
         <p>Sua foto será avaliada e, caso aprovada, estará na página principal!</p>
         <form method="post" enctype="multipart/form-data" action="upload">
             <input type="file" name="myfile" multiple accept=".jpg, .jpeg, .png, .bmp"><br>
-            <input type="submit" value="Enviar foto">
+            <input class="submitbuttonu" type="submit" value="Enviar foto">
         </form>
     </div>
 {% endblock %}
