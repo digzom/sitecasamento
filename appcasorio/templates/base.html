@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% if title %}
+        <title>Arwen&Aragorn - {{ title }}</title>
+        {% else %}
+        <title>Arwen&Aragorn!</title>
+        {% endif %}
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='base.css') }}">
+
+        <style>
+
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                
+            }
+
+            /* base, index e uploadedphotos */
+            .hero-image {
+                background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://desafio-surfmappers-estag.s3-us-west-2.amazonaws.com/wedding-bride-ceremony-1396579-pxhere.com.jpg");
+                background-color: #cccccc;
+                height: 56rem;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                position: relative;
+                
+            }
+
+            .hero-text {
+                text-align: center;
+                color: white;
+            }
+
+            .hero-text h1 {
+                font-size: 5rem;
+            }
+
+            .hero-text p {
+                font-size: 1.2rem;
+            }
+
+            #photos {
+                display: flex;
+                flex-wrap: wrap; 
+                display: inline-block;
+            }
+
+            #photos img {
+                width: 28rem;
+                padding: 2rem;
+                background-color: beige;
+                margin-bottom: 0.25rem;
+
+            }
+
+            ul li a {
+                color: azure;
+                margin-top: 1rem;
+            }
+
+            .uploadedphotos {
+                text-align: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+            }
+
+            #photosubmit {
+                border-radius: 10%;
+                border: none;
+                width: 5rem;
+                height: 3rem;
+                background-color: blanchedalmond;
+            }
+
+            .container { 
+                margin: auto;
+                text-align: center;
+                color: white;
+            }
+
+            #upload input {
+                margin: 1.5rem;
+                border-radius: 10%;
+            }
+
+        </style>
+    </head>
+    <body class="hero-image">
+        <div class="">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                {% if current_user.is_anonymous %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('uploadedphotos') }}">Novos Uploads</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('newuser') }}">Adicionar Usuário</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('upload')}}">Upload</a>
+                </li>
+            </ul>
+        </div>
+        <hr>
+        {% block content %}{% endblock %}
+
+    <!-- Scripts do Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>

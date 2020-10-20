@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="hero-text">
+        <h1>Novas fotos </h1>
+        <form method="post" action="/updatedphotos">
+            {% for img in images if img.aprovado == none %}
+            <span id="photos">
+                <img src="{{ img.url }}" style="width: 20rem" /><br>
+                <input type="radio" name="{{ img.id }}[aproved]">
+                <label>Aprovar</label>
+                <input type="radio" name="{{ img.id }}[deleted]">
+                <label>Excluir</label>
+            </span>
+            {% else %}
+            <h3>Você já cuidou de tudo. :)</h3>
+            {% endfor %}
+            <br>
+            <button id="photosubmit" type="submit">Salvar</button>
+        </form>
+    </div>
+{% endblock %}

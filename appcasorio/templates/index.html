@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="hero-text">
+        <header>
+            {% if current_user.is_authenticated %}
+            <h1>Olá, {{ current_user.username }}!</h1>
+            <p>Essa é a página de fotos do casamento.</p>
+            {% else %}
+            <h1>A r w e n   &   A r a g o r n</h1>
+            <p>Seja bem-vindo ao casamento de Arwen e Aragorn</p>
+            {% endif %}
+        </header>
+        {% for i in img %}
+        <div id="photos">
+            <img src="{{ i.url }}" /><br>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
