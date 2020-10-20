@@ -1,1 +1,1 @@
-web: flask migrate; gunicorn microblog:appcasorio
+web: flask db migrate; gunicorn microblog:appcasorio
