@@ -105,6 +105,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('index') }}">Home</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('newuser') }}">Adicionar Usuário</a>
+                </li>
                 {% if current_user.is_anonymous %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('login') }}">Login</a>
@@ -112,9 +115,6 @@
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('uploadedphotos') }}">Novos Uploads</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('newuser') }}">Adicionar Usuário</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
